@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TurnOnTeleport : MonoBehaviour {
 
-    public GameObject teleBox1, teleBox2; // two hitboxes on either side
+    public GameObject teleBox1, teleBox2; // two teleport boxes on either side
+    public GameObject hitbox1, hitbox2; // two hitboxes on either side
 
 	// Use this for initialization
 	void Start () {
@@ -20,10 +21,12 @@ public class TurnOnTeleport : MonoBehaviour {
             if (Movement.facing == 1)
             {
                 teleBox1.SetActive(true);
+                hitbox1.SetActive(true);
             }
             else if (Movement.facing == 0)
             {
                 teleBox2.SetActive(true);
+                hitbox2.SetActive(true);
             }
             StartCoroutine(TeleportBox());
         }
@@ -37,5 +40,7 @@ public class TurnOnTeleport : MonoBehaviour {
         yield return new WaitForEndOfFrame();
         teleBox1.SetActive(false);
         teleBox2.SetActive(false);
+        hitbox1.SetActive(false);
+        hitbox2.SetActive(false);
     }
 }
