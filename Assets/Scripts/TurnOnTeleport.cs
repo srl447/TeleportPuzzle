@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TurnOnTeleport : MonoBehaviour {
 
-    public GameObject teleBox1, teleBox2;
+    public GameObject teleBox1, teleBox2; // two hitboxes on either side
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,6 +14,7 @@ public class TurnOnTeleport : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        //activates either box depending on which way the player is facing
 		if(Input.GetKeyDown(KeyCode.E))
         {
             if (Movement.facing == 1)
@@ -27,6 +29,7 @@ public class TurnOnTeleport : MonoBehaviour {
         }
 	}
 
+    //Teleport box active for 3 frames before turing off
     IEnumerator TeleportBox()
     {
         yield return new WaitForEndOfFrame();

@@ -8,26 +8,29 @@ public class Movement : MonoBehaviour {
 
     public static int facing; //0 is left, 1 is right
 
-    public float speed;
+    public float speed; //how fast player moves
+
 	// Use this for initialization
 	void Start ()
     {
-        facing = 1;
+        facing = 1; //starts off facing right
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if (Input.GetKey(KeyCode.A))
+        //inputs for moving
+		if (Input.GetKey(KeyCode.A)) //move left with a
         {
             movingLeft = true;
-            GetComponent<SpriteRenderer>().flipX = true;
-            facing = 0;
+            GetComponent<SpriteRenderer>().flipX = true; //makes sprite face left
+            facing = 0; //sets variable to left
         }
-        else if (Input.GetKeyUp(KeyCode.A))
+        else if (Input.GetKeyUp(KeyCode.A)) //stops moving when you release a
         {
             movingLeft = false;
         }
+        //A : D :: Left : Right
         if (Input.GetKey(KeyCode.D))
         {
             movingRight = true;
@@ -42,6 +45,7 @@ public class Movement : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        //actually moving based on the input variables
         if(movingLeft)
         {
             transform.Translate(Vector3.left * speed);

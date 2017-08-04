@@ -6,7 +6,8 @@ public class Teleport : MonoBehaviour {
 
     public GameObject player;
 
-    bool left;
+    bool left; //variable to move back and forth 
+
 	// Use this for initialization
 	void Start () {
 		
@@ -31,11 +32,12 @@ public class Teleport : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector3 oldplayerPos = player.transform.position;
-        if(collision.gameObject.tag == "Enemy")
+        Vector3 oldplayerPos = player.transform.position; //stores the players initial position before swapping
+
+        if (collision.gameObject.tag == "Enemy") //swaps if telebox detects and enemy
         {
-            player.transform.position = collision.gameObject.transform.position;
-            collision.gameObject.transform.position = oldplayerPos;
+            player.transform.position = collision.gameObject.transform.position; //moves the player to the enemy position
+            collision.gameObject.transform.position = oldplayerPos; //moves the enemy to the player position
         }
     }
 }
