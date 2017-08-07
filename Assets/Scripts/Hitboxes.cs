@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hitboxes : MonoBehaviour {
 
-    public float power;
+    public float hPower, vPower;
 
     bool left;
 	// Use this for initialization
@@ -34,11 +34,11 @@ public class Hitboxes : MonoBehaviour {
         {
             if (Movement.facing == 0)
             {
-                collision.GetComponent<Rigidbody2D>().AddForce(Vector3.left * power);
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(-1f * hPower, 1f* vPower, 0f));
             }
             else
             {
-                collision.GetComponent<Rigidbody2D>().AddForce(Vector3.right * power);
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(1f * hPower, 1f * vPower, 0f));
             }
         }
     }
